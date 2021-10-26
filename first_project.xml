@@ -1,22 +1,47 @@
-package ru.deliveryClab;
+package ru.deliveryClub;
 
 
-
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FirstTest {
 
+
+ public ChromeDriver driver;
+
+ @Before
+ public void setUp() {
+  System.setProperty("webdriver.chrome.driver", "/Users/U405487/repo/Project1/lib/chromedriver.exe");
+  driver = new ChromeDriver();
+  System.out.println("test start");
+ }
+
  @Test
  public void FirstTest() {
-  System.setProperty("webdriver.chrome.driver", "/Users/U405487/repo/Project1/lib/chromedriver.exe");
- ChromeDriver driver = new ChromeDriver();
   driver.get("https://www.delivery-club.ru/moscow");
+
   String title = driver.getTitle();
   Assert.assertTrue(title.equals("Доставка еды из ресторанов Москвы от 15 минут! Delivery Club"));
-  driver.quit();
 
  }
 
-}
+ @Test
+ public void FirstTest2() {
+  driver.get("https://www.delivery-club.ru/moscow");
+
+  String title = driver.getTitle();
+  Assert.assertTrue(title.equals("Доставка еды из ресторанов Москвы от 15 минут! Delivery Club"));
+
+ }
+
+  @After
+  public void close() {
+   System.out.println("test close");
+   driver.quit();
+  }
+ }
+
+
